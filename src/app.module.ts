@@ -6,6 +6,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { APP_FILTER, APP_PIPE } from '@nestjs/core';
 import { AllExceptionsFilter } from './common/exception/all-exception.filter';
 import { HttpExceptionFilter } from './common/exception/http-exception.filter';
+import { AuthModule } from './auth/auth.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -21,6 +23,8 @@ import { HttpExceptionFilter } from './common/exception/http-exception.filter';
       // Setting synchronize: true shouldn't be used in production - otherwise you can lose production data.
       synchronize: true,
     }),
+    AuthModule,
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [
