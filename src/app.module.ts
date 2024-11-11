@@ -8,6 +8,7 @@ import { AllExceptionsFilter } from './common/exception/all-exception.filter';
 import { HttpExceptionFilter } from './common/exception/http-exception.filter';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
+import { ProductsModule } from './products/products.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { UsersModule } from './users/users.module';
     }),
     AuthModule,
     UsersModule,
+    ProductsModule,
   ],
   controllers: [AppController],
   providers: [
