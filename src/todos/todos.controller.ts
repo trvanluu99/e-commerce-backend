@@ -13,6 +13,8 @@ import { UpdateTodoDto } from './dto/update-todo.dto';
 import { ListAllEntities } from './dto/list-all-entities.dto';
 import { TodosService } from './todos.service';
 import { Todo } from './todo.entity';
+import { ResponseDto } from 'src/common/dto/response.dto';
+import { plainToClass, plainToInstance } from 'class-transformer';
 
 @Controller('todos')
 export class TodosController {
@@ -24,8 +26,13 @@ export class TodosController {
   }
 
   @Get()
-  findAll(@Query() query: ListAllEntities): Promise<Todo[]> {
-    return this.todosService.findAll();
+  async findAll(@Query() query: ListAllEntities): Promise<ResponseDto<Todo[]>> {
+    // return this.todosService.findAll();
+    const result = await this.todosService.findAll();
+    return {
+      message: 'Success!',
+      data: plainToInstance(Todo, result),
+    };
   }
 
   @Get(':id')
