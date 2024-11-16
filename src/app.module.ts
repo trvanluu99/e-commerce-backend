@@ -9,6 +9,7 @@ import { HttpExceptionFilter } from './common/exception/http-exception.filter';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { ProductsModule } from './products/products.module';
+import { CustomValidationExceptionFactory } from './common/exception/custom-validation-exception-factory.pipe';
 
 @Module({
   imports: [
@@ -41,7 +42,9 @@ import { ProductsModule } from './products/products.module';
     },
     {
       provide: APP_PIPE,
-      useClass: ValidationPipe,
+      useValue: new ValidationPipe({
+        exceptionFactory: CustomValidationExceptionFactory,
+      }),
     },
   ],
 })
