@@ -8,7 +8,7 @@ export class CreateProductDto {
   quantity_in_stock: number;
 
   @IsNumber()
-  unit_perchase_price: number;
+  unit_purchase_price: number;
 
   @IsNumber()
   unit_sale_price: number;
