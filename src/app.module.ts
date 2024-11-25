@@ -1,7 +1,6 @@
 import { Module, ValidationPipe } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { TodosModule } from './todos/todos.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { APP_FILTER, APP_PIPE } from '@nestjs/core';
 import { AllExceptionsFilter } from './common/exception/all-exception.filter';
@@ -13,7 +12,6 @@ import { CustomValidationExceptionFactory } from './common/exception/custom-vali
 
 @Module({
   imports: [
-    TodosModule,
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',
