@@ -16,4 +16,19 @@ export class User {
 
   @Column()
   role: string;
+
+  @Column()
+  birth_day: string;
+
+  @Column()
+  gender: string;
+
+  @Column()
+  phone_number: string;
+
+  @Column()
+  email: string;
+
+  @Column()
+  address: string;
 }
