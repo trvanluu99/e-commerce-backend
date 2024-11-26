@@ -9,6 +9,7 @@ import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { ProductsModule } from './products/products.module';
 import { CustomValidationExceptionFactory } from './common/exception/custom-validation-exception-factory.pipe';
+import { CategoriesModule } from './categories/categories.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { CustomValidationExceptionFactory } from './common/exception/custom-vali
     }),
     AuthModule,
     UsersModule,
+    CategoriesModule,
     ProductsModule,
   ],
   controllers: [AppController],
