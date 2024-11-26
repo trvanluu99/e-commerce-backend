@@ -10,6 +10,7 @@ import { UsersModule } from './users/users.module';
 import { ProductsModule } from './products/products.module';
 import { CustomValidationExceptionFactory } from './common/exception/custom-validation-exception-factory.pipe';
 import { CategoriesModule } from './categories/categories.module';
+import { CartsModule } from './carts/carts.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { CategoriesModule } from './categories/categories.module';
     UsersModule,
     CategoriesModule,
     ProductsModule,
+    CartsModule,
   ],
   controllers: [AppController],
   providers: [

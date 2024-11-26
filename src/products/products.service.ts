@@ -4,22 +4,16 @@ import { Product } from './product.entity';
 import { Repository } from 'typeorm';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
-import { Category } from 'src/categories/category.entity';
 
 @Injectable()
 export class ProductsService {
   constructor(
     @InjectRepository(Product)
     private readonly productsRepository: Repository<Product>,
-    @InjectRepository(Category)
-    private readonly categoriesRepository: Repository<Category>,
   ) {}
 
   async create(createProductDto: CreateProductDto): Promise<Product> {
     let product = new Product();
-    const category = await this.categoriesRepository.findOneBy({
-      id: createProductDto.category_id,
-    });
 
     product.name = createProductDto.name;
     product.quantity_in_stock = createProductDto.quantity_in_stock;
@@ -27,7 +21,7 @@ export class ProductsService {
     product.unit_sale_price = createProductDto.unit_sale_price;
     product.measure_unit = createProductDto.measure_unit;
     product.image_url = createProductDto.image_url;
-    product.category = category;
+    product.category_id = createProductDto.category_id;
 
     return await this.productsRepository.save(product);
   }
