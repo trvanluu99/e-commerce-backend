@@ -1,7 +1,15 @@
 import { Expose, Exclude } from 'class-transformer';
 import { Product } from 'src/products/product.entity';
 import { User } from 'src/users/user.entity';
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
 @Entity()
 export class Cart {
@@ -17,6 +25,12 @@ export class Cart {
   @PrimaryColumn()
   @Expose()
   public product_id: number;
+
+  @CreateDateColumn({ type: 'timestamp' })
+  created_at: Date;
+
+  @UpdateDateColumn({ type: 'timestamp' })
+  updated_at: Date;
 
   // Relationships
   @ManyToOne(() => User, (user) => user.carts, { onDelete: 'CASCADE' })

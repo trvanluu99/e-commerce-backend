@@ -3,11 +3,13 @@ import { Cart } from 'src/carts/cart.entity';
 import { Category } from 'src/categories/category.entity';
 import {
   Column,
+  CreateDateColumn,
   Entity,
   JoinColumn,
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 
 @Entity()
@@ -44,6 +46,13 @@ export class Product {
   @Column({ nullable: true })
   @Exclude()
   category_id: number | null;
+
+  // MySQL DB does not store created and updated time automatically, so we do it manually
+  @CreateDateColumn({ type: 'timestamp' })
+  created_at: Date;
+
+  @UpdateDateColumn({ type: 'timestamp' })
+  updated_at: Date;
 
   // Relationships
   @ManyToOne(() => Category, (category) => category.products, {

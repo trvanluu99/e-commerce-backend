@@ -1,6 +1,13 @@
 import { Expose, Exclude } from 'class-transformer';
 import { Product } from 'src/products/product.entity';
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
 @Entity()
 export class Category {
@@ -12,6 +19,12 @@ export class Category {
   @Column({ unique: true })
   @Expose()
   name: string;
+
+  @CreateDateColumn({ type: 'timestamp' })
+  created_at: Date;
+
+  @UpdateDateColumn({ type: 'timestamp' })
+  updated_at: Date;
 
   // Relationships
   @OneToMany(() => Product, (product) => product.category, { cascade: true })
